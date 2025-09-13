@@ -10,7 +10,7 @@ https://rd.nytimes.com/projects/gaussian-splatting-guide/
 
 Create a directory `./images` to store all the images.
 
-# 1. Colmap (for Feature Extraction, etc)
+# 2. Colmap (for Feature Extraction, etc)
 
 Install Colmap
 
@@ -43,7 +43,7 @@ colmap mapper \
 
 The data in `./colmap_output/dense` will be used in the next tool.
 
-# 2. Gaussian Splatting
+# 3. Gaussian Splatting
 
 Install gaussian splatting tool:
 
@@ -68,18 +68,18 @@ output/
 ├── ckpt_XXXX.pth     (checkpoints)
 ```
 
-# 3. Edit the PLY file (optional)
+# 4. Edit the PLY file (optional)
 
 Go to https://superspl.at/editor/, import your splat model, edit, then export.
 
-# 4. Convert PLY into SOG
+# 5. Convert PLY into SOG
 
 There are 2 ways to do this:
 
 - https://github.com/playcanvas/splat-transform - newer but fails at [SegFault Bug](https://github.com/playcanvas/splat-transform/issues/49)
 - https://github.com/playcanvas/sogs - deprecated but still works as of Sept 2025
 
-# 4a Convert PLY into SOG (`splat-transform` tool)
+# 5a Convert PLY into SOG (`splat-transform` tool)
 
 SKIP THIS if [SegFault Bug](https://github.com/playcanvas/splat-transform/issues/49) is not fixed.
 
@@ -108,7 +108,7 @@ splat-transform input.ply output.sog
 splat-transform input.ply output/meta.json
 ```
 
-# 4b Convert PLY into SOG (`sog-compress` tool)
+# 5b Convert PLY into SOG (`sog-compress` tool)
 
 Install `sogs-compress` tool:
 
@@ -129,7 +129,6 @@ Use it to compress PLY into Unbundled SOG:
 sogs-compress --ply your_ply_file.ply --output-dir directory_to_store_images_and_metadata
 ```
 
-# 5. Creating HTML to View SOG
+# 6. Creating HTML to View SOG
 
-see:
-- 
+See [/templates](/templates)
