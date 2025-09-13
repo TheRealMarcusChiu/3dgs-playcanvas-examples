@@ -76,7 +76,8 @@ output/
 
 # 4. Edit the PLY file (optional)
 
-Go to https://superspl.at/editor/, import your splat model, edit, then export.
+- Go to https://superspl.at/editor/, import your splat model, edit, then export.
+- or use https://www.realityscan.com/
 
 # 5. Convert PLY into SOG
 
