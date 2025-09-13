@@ -58,7 +58,13 @@ pip install opencv-contrib-python
 pip install tqdm
 ```
 
+Use it to train on the colmap output:
+
+```shell
 python train.py -s `../colmap_output/dense`
+```
+
+Your splat model `point_cloud.ply` will be under the `output` directory
 
 ```
 output/
