@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Example 3D</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+        <link rel="stylesheet" href="./index.css">
+        <link rel="preload" as="image" href="data/means_l.webp">
+        <link rel="preload" as="image" href="data/means_u.webp">
+        <link rel="preload" as="image" href="data/quats.webp">
+        <link rel="preload" as="image" href="data/scales.webp">
+        <link rel="preload" as="image" href="data/sh0.webp">
+        <link rel="preload" as="image" href="data/shN_centroids.webp">
+        <link rel="preload" as="image" href="data/shN_labels.webp">
+
+        <script type="importmap">
+            {
+                "imports": {
+                    "playcanvas": "./js/playcanvas.min.mjs"
+                }
+            }
+        </script>
+        <script type="module" src="./js/pwc.min.mjs"></script>
+        <script type="module" src="./js/index.js" defer></script>
+    </head>
+    <body>
+
+        <!-- PlayCanvas Web Components (PWC) -->
+        <pc-app antialias="false" depth="false" high-resolution="true" stencil="false">
+            <pc-asset src="./js/camera-controls.mjs" preload></pc-asset>
+
+            <pc-scene>
+                <pc-entity name="camera root">
+                    <pc-entity name="camera">
+                        <pc-camera nearClip="0.01" farClip="1000" horizontalFov="true" tonemap="neutral"></pc-camera>
+                        <pc-scripts>
+                            <pc-script name="cameraControls"></pc-script>
+                        </pc-scripts>
+                    </pc-entity>
+                </pc-entity>
+            </pc-scene>
+        </pc-app>
+
+        <!-- Info Panel -->
+        <div id="infoPanel" onclick="document.getElementById('infoPanel').classList.add('hidden')">
+            <div id="infoPanelContent" onclick="event.stopPropagation()">
+                <div id="about">
+                    <h3>About</h3>
+                    <p>This scan is made possible by recent advances in <a href="https://en.wikipedia.org/wiki/Gaussian_splatting">Gaussian Splatting</a>. In particular, this scene was shot on drones, aligned in <a href="https://www.capturingreality.com">RealityCapture</a>, trained in <a href="https://github.com/nerfstudio-project/gsplat" >gsplat</a>, compressed by <a href="https://fraunhoferhhi.github.io/Self-Organizing-Gaussians">SOGS</a>, and rendered by <a href="https://playcanvas.com/">PlayCanvas</a>.</p>
+                </div>
+                <div id="controls">
+                    <h3>Controls</h3>
+                    <div class="control-item">
+                        <span class="control-action">Orbit</span>
+                        <span class="control-key">Left Mouse<br/>Touch + Drag</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-action">Pan</span>
+                        <span class="control-key">Middle Mouse<br/>Swipe</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-action">Look</span>
+                        <span class="control-key">Right Mouse</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-action">Zoom</span>
+                        <span class="control-key">Mouse Wheel<br/>Pinch</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-action">Fly</span>
+                        <span class="control-key">WASD<br/>Arrow Keys</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-action">Fly faster</span>
+                        <span class="control-key">Shift</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-action">Fly slower</span>
+                        <span class="control-key">Ctrl</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-action">Reset Camera</span>
+                        <span class="control-key">R</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button Panel -->
+        <div id="buttonContainer">
+            <button id="info" class="button">
+                <svg class="buttonSvg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+            </button>
+        </div>
+    </body>
+</html>

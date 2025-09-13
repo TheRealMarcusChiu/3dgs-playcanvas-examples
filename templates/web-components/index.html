@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My PlayCanvas Web Components App</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "playcanvas": "https://cdn.jsdelivr.net/npm/playcanvas@latest/build/playcanvas.mjs"
+            }
+        }
+    </script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@playcanvas/web-components@latest/dist/pwc.mjs"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your PlayCanvas Web Components elements go here -->
+    <pc-app antialias="false" high-resolution="false">
+        <pc-asset src="https://cdn.jsdelivr.net/npm/playcanvas/scripts/esm/camera-controls.mjs"></pc-asset>
+<!--        <pc-asset id="toy" src="https://developer.playcanvas.com/assets/toy-cat.sog"></pc-asset>-->
+<!--        <pc-asset id="toy" src="./data/toy-cat.sog"></pc-asset>-->
+        <pc-asset id="toy" src="./data/point_cloud_clipped.ply"></pc-asset>
+        <pc-scene>
+            <pc-entity position="0 0 2.5">
+                <pc-camera></pc-camera>
+                <pc-scripts>
+                    <pc-script name="cameraControls"></pc-script>
+                </pc-scripts>
+            </pc-entity>
+            <pc-entity position="0 -0.7 0" rotation="0 0 180">
+                <pc-splat asset="toy"></pc-splat>
+            </pc-entity>
+        </pc-scene>
+    </pc-app>
+</body>
+</html>
