@@ -6,8 +6,8 @@
 ##################
 
 ssh aws << EOF
-  rm -rf 3dgs-playcanvas/
-  mkdir 3dgs-playcanvas
+  rm -rf my-room/
+  mkdir my-room
 EOF
 
-scp -r ./demos/www aws:~/3dgs-playcanvas
+scp -r ./demos/www aws:~/my-room

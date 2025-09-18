@@ -3,7 +3,7 @@ import { Asset, Entity, BoundingBox, Color, Script, Vec3, MiniStats } from 'play
 document.addEventListener('DOMContentLoaded', async () => {
 //    const position = new Vec3([-0.5216721296310425, 1.8032106161117554, 0.8622002005577087]);
     const position = new Vec3([0, 0, 0]);
-    const target = new Vec3([0, 1.4649281998059114, 0]);
+    const target = new Vec3([0, 0, 2]);
 
     const appElement = await document.querySelector('pc-app').ready();
     const app = await appElement.app;
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const cameraControls = window.cameraControls = this.entity.script.cameraControls;
             cameraControls.sceneSize = 5;
             cameraControls.lookSensitivity  = 0.1;
-            cameraControls.moveSpeed = 0.1;
-            cameraControls.moveFastSpeed = 0.2;
+            cameraControls.moveSpeed = 0.25;
+            cameraControls.moveFastSpeed = 0.5;
             cameraControls.moveSlowSpeed = 0.05;
             cameraControls.moveDamping = 0.98;
             cameraControls.rotateSpeed = 0.35;
@@ -64,6 +64,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                         break;
                 }
             });
+
+            const interval = setInterval(() => {
+                document.getElementById('room-noise').play()
+                    .then(() => clearInterval(interval))
+                    .catch(() => void 0)
+            }, 100)
         }
 
         postInitialize() {
